@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 
+import javax.swing.JButton;
 import javax.swing.JEditorPane;
 import javax.swing.JOptionPane;
 import javax.swing.JProgressBar;
@@ -15,15 +16,20 @@ public class publishTask2 extends Thread {
 	private JProgressBar progressBar;
 	private JProgressBar progressBar_all;
 	private JEditorPane editorPane;
-
-	public publishTask2(String[] SrcAndTarDir, JProgressBar progressBar, JProgressBar progressBar_all, JEditorPane editorPane) {
+	private JButton btnStart;
+	private JButton btnStop;
+	
+	
+	public publishTask2(String[] SrcAndTarDir, JProgressBar progressBar, JProgressBar progressBar_all, JEditorPane editorPane, JButton btnStart, JButton btnStop) {
 		// TODO Auto-generated constructor stub
 		this.SrcAndTarDir = SrcAndTarDir;
 		this.progressBar = progressBar;
 		this.progressBar_all = progressBar_all;
 		this.editorPane = editorPane;
+		this.btnStart = btnStart;
+		this.btnStop = btnStop;
 	}
-
+	
 	@Override
 	public void run() {
 
@@ -75,7 +81,10 @@ public class publishTask2 extends Thread {
 		long endTime = System.currentTimeMillis();
 		JOptionPane.showMessageDialog(null,
 				"복사가 완료되었습니다. 총 갯수" + (i + 1) + " 총 소요시간" + (endTime - startTime) / 1000.0f);
-
+		
+		btnStart.setEnabled(true);
+		btnStop.setVisible(false);
+		
 		System.out.println("스레드 종료");
 		System.out.println("--------");
 		

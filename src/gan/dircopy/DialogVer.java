@@ -95,6 +95,8 @@ public class DialogVer{
 		JButton btnStart = new JButton("Start");
 		btnStart.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				btnStart.setEnabled(false);
+				
 				String []SrcAndTarDir = {SrcDirText.getText(),TarDirText.getText()};
 		        	
 		    		JEditorPane editorPane = new JEditorPane();
@@ -110,9 +112,38 @@ public class DialogVer{
 		    		progressBar_all.setStringPainted(true);
 		    		progressBar_all.setBounds(86, 143, 160, 23);
 		    		frmDircopyuiver.getContentPane().add(progressBar_all);
-		    				    		
-					publishTask2 thread2 = new publishTask2(SrcAndTarDir , progressBar , progressBar_all, editorPane);
+		    		
+		    		JButton btnStop = new JButton("Stop");
+		    		btnStop.setBounds(281, 118, 97, 23);
+		    		frmDircopyuiver.getContentPane().add(btnStop);
+		    		
+					publishTask2 thread2 = new publishTask2(SrcAndTarDir , progressBar , progressBar_all, editorPane, btnStart,btnStop);
 					thread2.start();
+		    		
+
+		    		btnStop.addActionListener(new ActionListener() {
+						
+						@Override
+						public void actionPerformed(ActionEvent e) {
+							
+							if(thread2.getState()!=Thread.State.RUNNABLE){
+								thread2.suspend();
+								System.out.println(thread2.getState());
+							}
+							else if(thread2.getState()!=Thread.State.TIMED_WAITING) {
+								thread2.resume();
+								System.out.println(thread2.getState());
+							}
+//							else if(thread2.getState().equals("")) {
+//								thread2.resume();
+//								System.out.println(thread2.getState());
+//							}
+								
+						}
+					});
+		    		
+		    		
+		    				    		
 
 
 			      
@@ -147,5 +178,6 @@ public class DialogVer{
 		frmDircopyuiver.getContentPane().add(editorPane);
 		
 
-
-}}
+		
+}	
+}
