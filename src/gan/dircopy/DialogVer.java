@@ -1,29 +1,17 @@
 package gan.dircopy;
 
 import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JOptionPane;
-import javax.swing.JTextField;
-import javax.swing.plaf.ProgressBarUI;
-
-import java.awt.BorderLayout;
-import java.awt.Color;
-
-import javax.swing.JButton;
-import javax.swing.JFileChooser;
-
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.ObjectInputStream.GetField;
 import java.util.prefs.Preferences;
-import java.awt.event.ActionEvent;
+
+import javax.swing.JButton;
 import javax.swing.JEditorPane;
-import javax.swing.JProgressBar;
+import javax.swing.JFileChooser;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JTextField;
 
 public class DialogVer{
 	private Preferences prefs;
