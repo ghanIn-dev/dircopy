@@ -12,6 +12,7 @@ import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+import javax.swing.JProgressBar;
 
 public class DialogVer{
 	private Preferences prefs;
@@ -100,8 +101,17 @@ public class DialogVer{
 		    		editorPane.setBounds(34, 204, 344, 21);
 		    		frmDircopyuiver.getContentPane().add(editorPane);
 					
+		    		JProgressBar progressBar = new JProgressBar();
+		    		progressBar.setStringPainted(true);
+		    		progressBar.setBounds(86, 110, 160, 23);
+		    		frmDircopyuiver.getContentPane().add(progressBar);
 		    		
-					publishTask2 thread2 = new publishTask2(SrcAndTarDir);
+		    		JProgressBar progressBar_all = new JProgressBar();
+		    		progressBar_all.setStringPainted(true);
+		    		progressBar_all.setBounds(86, 143, 160, 23);
+		    		frmDircopyuiver.getContentPane().add(progressBar_all);
+		    				    		
+					publishTask2 thread2 = new publishTask2(SrcAndTarDir , progressBar , progressBar_all, editorPane);
 					thread2.start();
 
 
@@ -129,12 +139,13 @@ public class DialogVer{
 		frmDircopyuiver.getContentPane().add(label);
 		
 		JLabel label_1 = new JLabel("\uC9C4\uD589\uB3C4");
-		label_1.setBounds(12, 104, 72, 32);
+		label_1.setBounds(12, 101, 72, 32);
 		frmDircopyuiver.getContentPane().add(label_1);
 		
 		JEditorPane editorPane = new JEditorPane();
 		editorPane.setBounds(34, 175, 344, 76);
 		frmDircopyuiver.getContentPane().add(editorPane);
 		
+
 
 }}
